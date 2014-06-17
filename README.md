@@ -121,10 +121,11 @@ MtMessageResponse is used to acknowledge a MtMessage request, and also to provid
 To message status is an enumeration that describes status of the message at the instant the data is transmitted.  Possible MessageStatus values are below:
 
 
-Status | Name | Description
-1 | Accepted | RACO Wireless has accepted the message
-2 | InvalidCredential | Your credentials are invalid
-3 | InvalidRecipient | The MSISDN you are referencing is not in your account
+| Status | Name | Description |
+| ------ | ---- | ----------- |
+| 1 | Accepted | RACO Wireless has accepted the message |
+| 2 | InvalidCredential | Your credentials are invalid |
+| 3 | InvalidRecipient | The MSISDN you are referencing is not in your account |
 
 
 4
