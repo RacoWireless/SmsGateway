@@ -126,64 +126,32 @@ To message status is an enumeration that describes status of the message at the 
 | 1 | Accepted | RACO Wireless has accepted the message |
 | 2 | InvalidCredential | Your credentials are invalid |
 | 3 | InvalidRecipient | The MSISDN you are referencing is not in your account |
+| 4 | SubmittedToCarrier | The message has been submitted to the carrier |
+| 5 | InvalidMessageLength | The message submitted is too long (max 140 characters) |
+| 6 | MessageAlreadyAck | The message has already been acknowledged |
+| 7 | MessageDoesNotExist | The message requested does not exist |
+| 100 | CarrierInvalidRecipient | The carrier returned an ‘Invalid Recipient’ message |
+| 101 | CarrierAccepted | The carrier has accepted the message |
+| 102 | CarrierScheduled | The carrier has scheduled the message for delivery |
+| 103 | CarrierEnroute | The carrier has returned an Enroute status |
+| 104 | CarrierDelivered | The message has been delivered |
+| 105 | CarrierExpired | The message was not able to be delivered due to the message validity period expiring |
+| 106 | CarrierDeleted | The carrier deleted the message (an unlikely status) |
+| 107 | CarrierUndeliverable | The carrier could not deliver the message (an unlikely status) |
+| 108 | CarrierUnknown | The carrier returned an unknown status (an unlikely status) |
+| 109 | CarrierRejected | The carrier returned a rejected status (an unlikely status) |
+| 110 | CarrierSkipped | The carrier returned a skipped status (an unlikely status) |
 
 
-4
-SubmittedToCarrier
-The message has been submitted to the carrier
-5
-InvalidMessageLength
-The message submitted is too long (max 140 characters)
-6
-MessageAlreadyAck
-The message has already been acknowledged
-7
-MessageDoesNotExist
-The message requested does not exist
-100
-CarrierInvalidRecipient
-The carrier returned an ‘Invalid Recipient’ message
-101
-CarrierAccepted
-The carrier has accepted the message
-102
-CarrierScheduled
-The carrier has scheduled the message for delivery
-103
-CarrierEnroute
-The carrier has returned an Enroute status
-104
-CarrierDelivered
-The message has been delivered
-105
-CarrierExpired
-The message was not able to be delivered due to the message validity period expiring
-106
-CarrierDeleted
-The carrier deleted the message (an unlikely status)
-107
-CarrierUndeliverable
-The carrier could not deliver the message (an unlikely status)
-108
-CarrierUnknown
-The carrier returned an unknown status (an unlikely status)
-109
-CarrierRejected
-The carrier returned a rejected status (an unlikely status)
-110
-CarrierSkipped
-The carrier returned a skipped status (an unlikely status)
-
-
-
-
-Advanced Configurations (Coming Soon)
+## Advanced Configurations (Coming Soon)
 In a future release of the RACO SMS Gateway, partners will have some flexibility with regards to their gateway configuration.
 
-Require MoMessage Acknowledgement
+## Require MoMessage Acknowledgement
 This option (by default) is true, however, if you do not wish to acknowledge MO messages, we can turn this off.
 
-Deliver MT Status Update messages
+## Deliver MT Status Update messages
 If you do not wish to receive any MT Status Update messages, we can disable this feature.
-FAQ
+
+
+## FAQ
 {This section is currently blank}
