@@ -74,38 +74,59 @@ This section will describe what character set is available (is it UTF-7, UTF-8, 
 Valid XML Characters
 
 
-Message Specifications
-The Raco Wireless SMS Gateway can accept either XML or JSON encoded messages.
-MtMessage
+## Message Specifications
+The RacoWireless SMS Gateway can accept either XML or JSON encoded messages.
+### MtMessage
 MtMessage is used to submit a request to send a mobile terminated (server to device) message.
+```
+{
+  partnerId
+  webServiceKey
+  recipient
+  message
+}
+```
 
-MoMessage
+### MoMessage
 MoMessage is used to send MoMessage data (device to server) to the customer.
+```
+{
+  messageId
+  sender
+  receivedTimestamp
+  message
+}
+```
 
 
-MtMessageResponse
+### MtMessageResponse
 MtMessageResponse is used to acknowledge a MtMessage request, and also to provide status update information about previously submitted MtMessage objects.
-
+```
+{
+  messageId
+  recipient
+  message
+  acceptedTimestamp
+  submittedToCarrierTimestamp
+  carrierAcceptedTimestamp
+  finalizedTimestamp
+  status
+}
+```
 
 
 
 
-MessageStatus
+## MessageStatus
 To message status is an enumeration that describes status of the message at the instant the data is transmitted.  Possible MessageStatus values are below:
 
 
-Status
-Name
-Description
-1
-Accepted
-RACO Wireless has accepted the message
-2
-InvalidCredential
-Your credentials are invalid
-3
-InvalidRecipient
-The MSISDN you are referencing is not in your account
+Status|Name|Description
+1|Accepted|RACO Wireless has accepted the message
+2|InvalidCredential|Your credentials are invalid
+3|InvalidRecipient|The MSISDN you are referencing is not in your account
+
+
 4
 SubmittedToCarrier
 The message has been submitted to the carrier
