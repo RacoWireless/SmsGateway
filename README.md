@@ -1,5 +1,4 @@
 # RacoWireless SMS Gateway
-==========
 
 The RacoWireless SMS Gateway allows RacoWireless customers to send and receive SMS messages over a simple REST API.
 
@@ -8,12 +7,14 @@ The RacoWireless SMS Gateway allows RacoWireless customers to send and receive S
 MT Messages are submitted by posting a JSON Serialized Mt Message object to the web service endpoint.  Alternatively you may submit a GET request with the parameters in the URL.  As a slight deviation for restful web services, all requests (even invalid requests) will be responded with HTTP Status code 200 - and the output data will be a MtMessageResponse object.
 
 POST https://sms.racowireless.com/send (this URL is not yet active and may change)
-'''{
+'''
+{
   "partnerId":551427,
   "webServiceKey":"A14CB2CB30224B1F56C16CJ527A248C7",
   "recipient":"15554442233",
   "message":"Hello World"
-}///
+}
+'''
 
 NOTE: If your application requires transmitting characters that cannot be transmitted in XML without encoding (such as the ‘<’ character), you must use the https://sms.racowireless.com/sendEncoded method.  The sendEncoded method requires the message parameter to be Base64 encoded.  Otherwise the methodology is identical.
 
