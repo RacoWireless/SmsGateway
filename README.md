@@ -6,18 +6,19 @@ The RacoWireless SMS Gateway allows RacoWireless customers to send and receive S
 ## How to send MT Messages
 MT Messages are submitted by posting a JSON Serialized Mt Message object to the web service endpoint.  Alternatively you may submit a GET request with the parameters in the URL.  As a slight deviation for restful web services, all requests (even invalid requests) will be responded with HTTP Status code 200 - and the output data will be a MtMessageResponse object.
 
+```
 POST https://sms.racowireless.com/send (this URL is not yet active and may change)
-'''
 {
   "partnerId":551427,
   "webServiceKey":"A14CB2CB30224B1F56C16CJ527A248C7",
   "recipient":"15554442233",
   "message":"Hello World"
 }
-'''
+```
 
 NOTE: If your application requires transmitting characters that cannot be transmitted in XML without encoding (such as the ‘<’ character), you must use the https://sms.racowireless.com/sendEncoded method.  The sendEncoded method requires the message parameter to be Base64 encoded.  Otherwise the methodology is identical.
 
+```
 POST https://sms.racowireless.com/sendEncoded (this URL is not yet active and may change)
 {
   "partnerId":551427,
@@ -25,11 +26,13 @@ POST https://sms.racowireless.com/sendEncoded (this URL is not yet active and ma
   "recipient":"15554442233",
   "message":"SGVsbG8gV29ybGQ="
 }
-How to receive MO Messages
+```
+
+## How to receive MO Messages
 To receive an MO Message, make a get request to the web service endpoint.  Your request will be held open until a message is available, or for {30} seconds (whichever comes first).  If you wish to receive messages as quickly as possible, your solution should ‘infinite loop’ this http request to get messages as soon as possible.
 
+```
 GET https://sms.racowireless.com/receive?partnerId={partnerId}&webServiceKey={wsk}
- (this URL is not yet active and may change)
 
 MoMessage
 {
@@ -52,13 +55,14 @@ MtMessageResponse
 }
 
 NOTE: Timestamps are in UTC
+```
 
 NOTE: If your application requires transmitting characters that cannot be transmitted in XML without encoding (such as the ‘<’ character), you must use the https://sms.racowireless.com/receiveEncoded method.  The receiveEncoded method will Base64 encode the ‘message’ parameter.  Otherwise the methodology is identical.
 
-MT Message Status Updates
+### MT Message Status Updates
 Two types of objects will be available from https://sms.racowireless.com/receive - both MoMessage objects and MtMessageResponse objects.  As MtMessages are processed by RACO Wireless and the carrier, we will notify you by adding new MtMessageResponse objects to your queue.  The combination of timestamps not being null and the MessageStatus value will tell you the specific message status.  The only time more than one status may correspond to a given timestamp is the finalizedTimestamp.
 
-All message deliveries must be acknowledged
+### All message deliveries must be acknowledged
 To support a transactional workflow, messages must be acknowledged after they have been processed.  Messages may be acknowledged by making a get or post request to https://sms.racowireless.com/ack.  Each request requires 3 arguments that may be submitted in post data (json serialization) or included in the query string.
 
 For example:
